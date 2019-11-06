@@ -1,6 +1,6 @@
-## 0.1.1 [unreleased]
+## 0.1.1
 
-- Fixed error on Linux
+- Fixed errors on Linux and Windows
 
 ## 0.1.0
 
