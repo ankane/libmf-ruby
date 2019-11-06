@@ -16,8 +16,10 @@ module Libmf
   lib_path =
     if ::FFI::Platform.windows?
       "../vendor/windows/mf.dll"
-    else
+    elsif ::FFI::Platform.mac?
       "libmf.bundle"
+    else
+      "libmf.so"
     end
   self.ffi_lib << File.expand_path(lib_path, __dir__)
 
