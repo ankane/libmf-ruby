@@ -4,6 +4,8 @@
 
 :fire: Uses the C API for blazing performance
 
+[![Build Status](https://travis-ci.org/ankane/libmf.svg?branch=master)](https://travis-ci.org/ankane/libmf)
+
 ## Installation
 
 Add this line to your application’s Gemfile:
