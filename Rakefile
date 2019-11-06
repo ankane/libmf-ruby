@@ -10,3 +10,11 @@ Rake::TestTask.new do |t|
 end
 
 Rake::ExtensionTask.new("libmf")
+
+# include ext in local installs but not releases
+task :remove_ext do
+  path = "lib/libmf.bundle"
+  File.unlink(path) if File.exist?(path)
+end
+
+Rake::Task["release:guard_clean"].enhance [:remove_ext]
