@@ -73,6 +73,8 @@ module Libmf
       options.each do |k, v|
         param[k] = v
       end
+      # do_nmf must be true for generalized KL-divergence
+      param[:do_nmf] = true if param[:fun] == 2
       param
     end
 

@@ -1,3 +1,7 @@
+## 0.1.3 [unreleased]
+
+- No need to set `do_nmf` with generalized KL-divergence
+
 ## 0.1.2
 
 - Fixed bug in `p_factors` and `q_factors` methods

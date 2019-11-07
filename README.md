@@ -107,7 +107,7 @@ For real-valued matrix factorization
 
 - 0 - squared error (L2-norm)
 - 1 - absolute error (L1-norm)
-- 2 - generalized KL-divergence (`do_nmf` is required)
+- 2 - generalized KL-divergence
 
 For binary matrix factorization
 
