@@ -65,13 +65,27 @@ Pass a validation set
 model.fit(data, eval_set: eval_set)
 ```
 
+## Cross-Validation
+
+Perform cross-validation
+
+```ruby
+model.cv(data)
+```
+
+Specify the number of folds
+
+```ruby
+model.cv(data, folds: 5)
+```
+
 ## Parameters
 
 Pass parameters - default values below
 
 ```ruby
 Libmf::Model.new(
-  fun: 0,             # loss function (0-12, same as LIBMF)
+  fun: 0,             # loss function
   k: 8,               # number of latent factors
   nr_threads: 12,     # number of threads used
   nr_bins: 25,        # number of bins
@@ -89,19 +103,25 @@ Libmf::Model.new(
 )
 ```
 
-## Cross-Validation
+### Loss Functions
 
-Perform cross-validation
+For real-valued matrix factorization
 
-```ruby
-model.cv(data)
-```
+- 0 - squared error (L2-norm)
+- 1 - absolute error (L1-norm)
+- 2 - generalized KL-divergence (`do_nmf` is required)
 
-Specify the number of folds
+For binary matrix factorization
 
-```ruby
-model.cv(data, folds: 5)
-```
+- 5 - logarithmic error
+- 6 - squared hinge loss
+- 7 - hinge loss
+
+For one-class matrix factorization
+
+- 10 - row-oriented pair-wise logarithmic loss
+- 11 - column-oriented pair-wise logarithmic loss
+- 12 - squared error (L2-norm)
 
 ## Resources
 
