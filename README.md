@@ -1,8 +1,6 @@
 # LIBMF
 
-[LIBMF](https://github.com/cjlin1/libmf) - large-scale sparse matrix factorization - for Ruby
-
-:fire: Uses the C API for blazing performance
+[LIBMF](https://github.com/cjlin1/libmf) - high performance, large-scale sparse matrix factorization - for Ruby
 
 [![Build Status](https://travis-ci.org/ankane/libmf.svg?branch=master)](https://travis-ci.org/ankane/libmf)
 
