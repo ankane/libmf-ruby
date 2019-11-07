@@ -1,5 +1,5 @@
 # dependencies
-require "ffi"
+require "fiddle/import"
 
 # modules
 require "libmf/model"
@@ -11,15 +11,12 @@ module Libmf
   class << self
     attr_accessor :ffi_lib
   end
-  lib_path =
-    if ::FFI::Platform.windows?
-      "../vendor/libmf/windows/mf.dll"
-    elsif ::FFI::Platform.mac?
-      "libmf.bundle"
-    else
-      "libmf.so"
-    end
-  self.ffi_lib = [File.expand_path(lib_path, __dir__)]
+  root_path = File.expand_path("..", __dir__)
+  self.ffi_lib = [
+    "#{root_path}/lib/libmf.so",
+    "#{root_path}/lib/libmf.bundle",
+    "#{root_path}/vendor/libmf/windows/mf.dll"
+  ]
 
   # friendlier error message
   autoload :FFI, "libmf/ffi"

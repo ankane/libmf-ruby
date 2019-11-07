@@ -80,7 +80,7 @@ module Libmf
       raise Error, "No data" if data.empty?
 
       nodes = []
-      r = ::FFI::MemoryPointer.new(FFI::Node, data.size)
+      r = Fiddle::Pointer.malloc(FFI::Node.size * data.size)
       data.each_with_index do |row, i|
         n = FFI::Node.new(r[i])
         n[:u] = row[0]
