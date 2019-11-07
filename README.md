@@ -67,32 +67,26 @@ model.fit(data, eval_set: eval_set)
 
 ## Parameters
 
-Pass parameters
+Pass parameters - default values below
 
 ```ruby
-model = Libmf::Model.new(k: 20, nr_iters: 50)
-```
-
-Supports the same parameters as LIBMF
-
-```text
-variable      meaning                                    default
-================================================================
-fun           loss function                                    0
-k             number of latent factors                         8
-nr_threads    number of threads used                          12
-nr_bins       number of bins                                  25
-nr_iters      number of iterations                            20
-lambda_p1     coefficient of L1-norm regularization on P       0
-lambda_p2     coefficient of L2-norm regularization on P     0.1
-lambda_q1     coefficient of L1-norm regularization on Q       0
-lambda_q2     coefficient of L2-norm regularization on Q     0.1
-eta           learning rate                                  0.1
-alpha         importance of negative entries                 0.1
-c             desired value of negative entries           0.0001
-do_nmf        perform non-negative MF (NMF)                false
-quiet         no outputs to stdout                         false
-copy_data     copy data in training procedure               true
+Libmf::Model.new(
+  fun: 0,             # loss function (0-12, same as LIBMF)
+  k: 8,               # number of latent factors
+  nr_threads: 12,     # number of threads used
+  nr_bins: 25,        # number of bins
+  nr_iters: 20,       # number of iterations
+  lambda_p1: 0,       # coefficient of L1-norm regularization on P
+  lambda_p2: 0.1,     # coefficient of L2-norm regularization on P
+  lambda_q1: 0,       # coefficient of L1-norm regularization on Q
+  lambda_q2: 0.1,     # coefficient of L2-norm regularization on Q
+  eta: 0.1,           # learning rate
+  alpha: 0.1,         # importance of negative entries
+  c: 0.0001,          # desired value of negative entries
+  do_nmf: false,      # perform non-negative MF (NMF)
+  quiet: false,       # no outputs to stdout
+  copy_data: true     # copy data in training procedure
+)
 ```
 
 ## Cross-Validation
