@@ -3,7 +3,7 @@ require_relative "lib/libmf/version"
 Gem::Specification.new do |spec|
   spec.name          = "libmf"
   spec.version       = Libmf::VERSION
-  spec.summary       = "LIBMF - high performance, large-scale sparse matrix factorization - for Ruby"
+  spec.summary       = "LIBMF - large-scale sparse matrix factorization - for Ruby"
   spec.homepage      = "https://github.com/ankane/libmf"
   spec.license       = "MIT"
 
