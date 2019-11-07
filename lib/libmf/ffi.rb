@@ -11,7 +11,7 @@ module Libmf
       raise LoadError, "Could not find LIBMF"
     end
 
-    typealias "bool", "char"
+    typealias "bool", "int"
 
     typealias "mf_float", "float"
     typealias "mf_double", "double"
