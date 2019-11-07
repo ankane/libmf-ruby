@@ -1,4 +1,4 @@
-## 0.1.2 [unreleased]
+## 0.1.2
 
 - Fixed bug in `p_factors` and `q_factors` methods
 
