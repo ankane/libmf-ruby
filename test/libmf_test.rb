@@ -22,6 +22,16 @@ class LibmfTest < Minitest::Test
     model.load_model(tempfile.path)
     assert_equal pred, model.predict(1, 1)
 
+    lines = File.readlines(tempfile.path)
+    p10 = lines.find { |l| l.start_with?("p10 ") }[5..-1].split(" ").map(&:to_f)
+    p10.zip(model.p_factors[10]).each do |a, b|
+      assert_in_delta a, b
+    end
+    q10 = lines.find { |l| l.start_with?("q10 ") }[5..-1].split(" ").map(&:to_f)
+    q10.zip(model.q_factors[10]).each do |a, b|
+      assert_in_delta a, b
+    end
+
     assert_equal 2309, model.rows
     assert_equal 1368, model.columns
     assert_equal 8, model.factors

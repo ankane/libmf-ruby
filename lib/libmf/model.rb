@@ -52,11 +52,11 @@ module Libmf
     end
 
     def p_factors
-      reshape(model[:p].read_array_of_float(factors * rows), [rows, factors])
+      reshape(model[:p].read_array_of_float(factors * rows), factors)
     end
 
     def q_factors
-      reshape(model[:q].read_array_of_float(factors * columns), [columns, factors])
+      reshape(model[:q].read_array_of_float(factors * columns), factors)
     end
 
     private
@@ -100,13 +100,8 @@ module Libmf
       prob
     end
 
-    def reshape(arr, dims)
-      rows = dims.first
-      new_arr = rows.times.map { [] }
-      arr.each_with_index do |v, i|
-        new_arr[i % rows] << v
-      end
-      new_arr
+    def reshape(arr, factors)
+      arr.each_slice(factors).to_a
     end
   end
 end

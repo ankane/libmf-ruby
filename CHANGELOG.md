@@ -1,3 +1,7 @@
+## 0.1.2 [unreleased]
+
+- Fixed bug in `p_factors` and `q_factors` methods
+
 ## 0.1.1
 
 - Fixed errors on Linux and Windows
