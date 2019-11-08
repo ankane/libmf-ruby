@@ -83,21 +83,21 @@ Pass parameters - default values below
 
 ```ruby
 Libmf::Model.new(
-  fun: 0,             # loss function
-  k: 8,               # number of latent factors
-  nr_threads: 12,     # number of threads used
-  nr_bins: 25,        # number of bins
-  nr_iters: 20,       # number of iterations
-  lambda_p1: 0,       # coefficient of L1-norm regularization on P
-  lambda_p2: 0.1,     # coefficient of L2-norm regularization on P
-  lambda_q1: 0,       # coefficient of L1-norm regularization on Q
-  lambda_q2: 0.1,     # coefficient of L2-norm regularization on Q
-  eta: 0.1,           # learning rate
-  alpha: 0.1,         # importance of negative entries
-  c: 0.0001,          # desired value of negative entries
-  do_nmf: false,      # perform non-negative MF (NMF)
-  quiet: false,       # no outputs to stdout
-  copy_data: true     # copy data in training procedure
+  loss: 0,                # loss function
+  factors: 8,             # number of latent factors
+  threads: 12,            # number of threads used
+  bins: 25,               # number of bins
+  iterations: 20,         # number of iterations
+  lambda_p1: 0,           # coefficient of L1-norm regularization on P
+  lambda_p2: 0.1,         # coefficient of L2-norm regularization on P
+  lambda_q1: 0,           # coefficient of L1-norm regularization on Q
+  lambda_q2: 0.1,         # coefficient of L2-norm regularization on Q
+  learning_rate: 0.1,     # learning rate
+  alpha: 0.1,             # importance of negative entries
+  c: 0.0001,              # desired value of negative entries
+  nmf: false,             # perform non-negative MF (NMF)
+  quiet: false,           # no outputs to stdout
+  copy_data: true         # copy data in training procedure
 )
 ```
 

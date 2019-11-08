@@ -68,9 +68,20 @@ module Libmf
 
     def param
       param = FFI.mf_get_default_param
+      options = @options.dup
       # silence insufficient blocks warning with default params
-      options = {nr_bins: 25}.merge(@options)
+      options[:bins] ||= 25 unless options[:nr_bins]
+      options_map = {
+        :loss => :fun,
+        :factors => :k,
+        :threads => :nr_threads,
+        :bins => :nr_bins,
+        :iterations => :nr_iters,
+        :learning_rate => :eta,
+        :nmf => :do_nmf
+      }
       options.each do |k, v|
+        k = options_map[k] if options_map[k]
         param[k] = v
       end
       # do_nmf must be true for generalized KL-divergence
