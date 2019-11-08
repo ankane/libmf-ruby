@@ -1,4 +1,4 @@
-## 0.1.3 [unreleased]
+## 0.1.3
 
 - Made parameter names more Ruby-like
 - No need to set `do_nmf` with generalized KL-divergence
