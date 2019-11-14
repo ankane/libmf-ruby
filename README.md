@@ -2,6 +2,8 @@
 
 [LIBMF](https://github.com/cjlin1/libmf) - large-scale sparse matrix factorization - for Ruby
 
+Check out [Disco](https://github.com/ankane/disco) for higher-level collaborative filtering
+
 [![Build Status](https://travis-ci.org/ankane/libmf.svg?branch=master)](https://travis-ci.org/ankane/libmf)
 
 ## Installation
