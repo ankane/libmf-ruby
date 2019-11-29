@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.version       = Libmf::VERSION
   spec.summary       = "LIBMF - large-scale sparse matrix factorization - for Ruby"
   spec.homepage      = "https://github.com/ankane/libmf"
-  spec.license       = "MIT"
+  spec.license       = "BSD-3-Clause"
 
   spec.author        = "Andrew Kane"
   spec.email         = "andrew@chartkick.com"
