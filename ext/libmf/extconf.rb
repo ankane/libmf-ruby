@@ -15,6 +15,7 @@ else
   end
 
   # if have_library("omp")
+  #   # add -Xpreprocessor for Mac
   #   $CXXFLAGS << " -fopenmp -DUSEOMP"
   # end
 
