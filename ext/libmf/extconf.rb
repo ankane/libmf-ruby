@@ -6,10 +6,13 @@ when /mingw/
   File.write("Makefile", dummy_makefile("libmf").join)
 else
   abort "Missing stdc++" unless have_library("stdc++")
-  $CXXFLAGS << " -std=c++11"
+  $CXXFLAGS << " -std=c++0x"
 
-  # TODO
-  # if have_library("libomp")
+  # use SSE to accelerate LIBMF
+  $CXXFLAGS << " -DUSESSE"
+
+  # if have_library("omp")
+  #   $CXXFLAGS << " -fopenmp -DUSEOMP"
   # end
 
   $objs = ["mf.o"]
