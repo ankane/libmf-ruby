@@ -1,7 +1,6 @@
 ## 0.1.4 (unreleased)
 
 - Changed to BSD 3-Clause license to match LIBMF
-- Improved performance with SSE
 
 ## 0.1.3 (2019-11-07)
 

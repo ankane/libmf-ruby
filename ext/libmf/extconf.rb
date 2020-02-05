@@ -9,7 +9,10 @@ else
   $CXXFLAGS << " -std=c++0x"
 
   # use SSE to accelerate LIBMF
-  $CXXFLAGS << " -DUSESSE"
+  # TODO use by default when available
+  if enable_config("sse")
+    $CXXFLAGS << " -DUSESSE"
+  end
 
   # if have_library("omp")
   #   $CXXFLAGS << " -fopenmp -DUSEOMP"
