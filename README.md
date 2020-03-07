@@ -98,8 +98,7 @@ Libmf::Model.new(
   alpha: 0.1,             # importance of negative entries
   c: 0.0001,              # desired value of negative entries
   nmf: false,             # perform non-negative MF (NMF)
-  quiet: false,           # no outputs to stdout
-  copy_data: true         # copy data in training procedure
+  quiet: false            # no outputs to stdout
 )
 ```
 

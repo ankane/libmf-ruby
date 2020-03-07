@@ -81,6 +81,7 @@ module Libmf
       options = @options.dup
       # silence insufficient blocks warning with default params
       options[:bins] ||= 25 unless options[:nr_bins]
+      options[:copy_data] = false unless options.key?(:copy_data)
       options_map = {
         :loss => :fun,
         :factors => :k,
