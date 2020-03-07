@@ -98,16 +98,19 @@ module Libmf
 
       raise Error, "No data" if data.empty?
 
-      nodes = []
-      r = ::FFI::MemoryPointer.new(FFI::Node, data.size)
-      # TODO do in C for performance
-      data.each_with_index do |row, i|
-        n = FFI::Node.new(r[i])
-        n[:u] = row[0]
-        n[:v] = row[1]
-        n[:r] = row[2]
-        nodes << n
+      # TODO do in C for better performance
+      buffer = String.new
+      data.each do |row|
+        row[0, 2].pack("i*".freeze, buffer: buffer)
+        row[2, 1].pack("f".freeze, buffer: buffer)
       end
+
+      r = ::FFI::MemoryPointer.new(FFI::Node, data.size)
+      r.write_bytes(buffer)
+
+      # double check size is what we expect
+      # FFI will throw an error above if too long
+      raise Error, "Bad buffer size" if r.size != buffer.bytesize
 
       m = data.max_by { |r| r[0] }[0] + 1
       n = data.max_by { |r| r[1] }[1] + 1
