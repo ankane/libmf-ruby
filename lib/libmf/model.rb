@@ -5,15 +5,25 @@ module Libmf
     end
 
     def fit(data, eval_set: nil)
-      train_set = create_problem(data)
+      if data.is_a?(String)
+        @model =
+          if eval_set
+            raise ArgumentError, "eval_set must be a path" unless eval_set.is_a?(String)
+            FFI.mf_train_with_validation_on_disk(data, eval_set, param)
+          else
+            FFI.mf_train_on_disk(data, param)
+          end
+      else
+        train_set = create_problem(data)
 
-      @model =
-        if eval_set
-          eval_set = create_problem(eval_set)
-          FFI.mf_train_with_validation(train_set, eval_set, param)
-        else
-          FFI.mf_train(train_set, param)
-        end
+        @model =
+          if eval_set
+            eval_set = create_problem(eval_set)
+            FFI.mf_train_with_validation(train_set, eval_set, param)
+          else
+            FFI.mf_train(train_set, param)
+          end
+      end
 
       nil
     end
@@ -94,6 +104,7 @@ module Libmf
 
       nodes = []
       r = ::FFI::MemoryPointer.new(FFI::Node, data.size)
+      # TODO do in C for performance
       data.each_with_index do |row, i|
         n = FFI::Node.new(r[i])
         n[:u] = row[0]
@@ -102,13 +113,13 @@ module Libmf
         nodes << n
       end
 
-      m = nodes.map { |n| n[:u] }.max + 1
-      n = nodes.map { |n| n[:v] }.max + 1
+      m = data.max_by { |r| r[0] }[0] + 1
+      n = data.max_by { |r| r[1] }[1] + 1
 
       prob = FFI::Problem.new
       prob[:m] = m
       prob[:n] = n
-      prob[:nnz] = nodes.size
+      prob[:nnz] = data.size
       prob[:r] = r
       prob
     end

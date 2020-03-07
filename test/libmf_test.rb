@@ -50,6 +50,16 @@ class LibmfTest < Minitest::Test
     model.fit(train_set, eval_set: eval_set)
   end
 
+  def test_path
+    model = Libmf::Model.new(quiet: true)
+    model.fit(file_path("real_matrix.tr.txt"))
+  end
+
+  def test_path_eval_set
+    model = Libmf::Model.new(quiet: true)
+    model.fit(file_path("real_matrix.tr.txt"), eval_set: file_path("real_matrix.te.txt"))
+  end
+
   def test_cv
     data = read_file("real_matrix.tr.txt")
     model = Libmf::Model.new(quiet: true)
@@ -74,9 +84,13 @@ class LibmfTest < Minitest::Test
 
   private
 
+  def file_path(filename)
+    "vendor/libmf/demo/#{filename}"
+  end
+
   def read_file(filename)
     data = []
-    File.foreach("vendor/libmf/demo/#{filename}") do |line|
+    File.foreach(file_path(filename)) do |line|
       row = line.chomp.split(" ")
       data << [row[0].to_i, row[1].to_i, row[2].to_f]
     end

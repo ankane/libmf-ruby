@@ -1,5 +1,6 @@
 ## 0.1.4 (unreleased)
 
+- Added support for on-disk training
 - Changed to BSD 3-Clause license to match LIBMF
 
 ## 0.1.3 (2019-11-07)

@@ -123,6 +123,22 @@ For one-class matrix factorization
 - 11 - column-oriented pair-wise logarithmic loss
 - 12 - squared error (L2-norm)
 
+## Performance [master]
+
+For performance, data can be read directly from files
+
+```ruby
+model.fit("train.txt", eval_set: "validate.txt")
+```
+
+Data should be in the format `row_index column_index value`:
+
+```txt
+0 0 5.0
+0 2 3.5
+1 1 4.0
+```
+
 ## Resources
 
 - [LIBMF: A Library for Parallel Matrix Factorization in Shared-memory Systems](https://www.csie.ntu.edu.tw/~cjlin/papers/libmf/libmf_open_source.pdf)
