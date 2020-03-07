@@ -5,25 +5,15 @@ module Libmf
     end
 
     def fit(data, eval_set: nil)
-      if data.is_a?(String)
-        @model =
-          if eval_set
-            raise ArgumentError, "eval_set must be a path" unless eval_set.is_a?(String)
-            FFI.mf_train_with_validation_on_disk(data, eval_set, param)
-          else
-            FFI.mf_train_on_disk(data, param)
-          end
-      else
-        train_set = create_problem(data)
+      train_set = create_problem(data)
 
-        @model =
-          if eval_set
-            eval_set = create_problem(eval_set)
-            FFI.mf_train_with_validation(train_set, eval_set, param)
-          else
-            FFI.mf_train(train_set, param)
-          end
-      end
+      @model =
+        if eval_set
+          eval_set = create_problem(eval_set)
+          FFI.mf_train_with_validation(train_set, eval_set, param)
+        else
+          FFI.mf_train(train_set, param)
+        end
 
       nil
     end
@@ -101,6 +91,11 @@ module Libmf
     end
 
     def create_problem(data)
+      if data.is_a?(String)
+        # need to expand path so it's absolute
+        return FFI.read_problem(File.expand_path(data))
+      end
+
       raise Error, "No data" if data.empty?
 
       nodes = []

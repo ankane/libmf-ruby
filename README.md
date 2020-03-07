@@ -128,6 +128,7 @@ For performance, data can be read directly from files
 
 ```ruby
 model.fit("train.txt", eval_set: "validate.txt")
+model.cv("train.txt")
 ```
 
 Data should be in the format `row_index column_index value`:
