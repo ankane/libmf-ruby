@@ -99,6 +99,7 @@ module Libmf
       raise Error, "No data" if data.empty?
 
       # TODO do in C for better performance
+      # can use FIX2INT() and RFLOAT_VALUE() instead of pack
       buffer = String.new
       data.each do |row|
         row[0, 2].pack("i*".freeze, buffer: buffer)
