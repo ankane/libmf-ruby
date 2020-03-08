@@ -59,6 +59,14 @@ module Libmf
       reshape(model[:q].read_array_of_float(factors * columns), factors)
     end
 
+    def p_factors_numo
+      Numo::SFloat.from_string(model[:p].read_bytes(factors * rows * 4)).reshape(rows, factors)
+    end
+
+    def q_factors_numo
+      Numo::SFloat.from_string(model[:q].read_bytes(factors * columns * 4)).reshape(columns, factors)
+    end
+
     private
 
     def model

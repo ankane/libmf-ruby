@@ -139,6 +139,15 @@ Data should be in the format `row_index column_index value`:
 1 1 4.0
 ```
 
+## Numo [master]
+
+Get latent factors as Numo arrays
+
+```ruby
+model.p_factors_numo
+model.q_factors_numo
+```
+
 ## Resources
 
 - [LIBMF: A Library for Parallel Matrix Factorization in Shared-memory Systems](https://www.csie.ntu.edu.tw/~cjlin/papers/libmf/libmf_open_source.pdf)

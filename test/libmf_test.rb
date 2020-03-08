@@ -86,6 +86,16 @@ class LibmfTest < Minitest::Test
     assert_equal "No data", error.message
   end
 
+  def test_numo
+    data = read_file("real_matrix.tr.txt")
+
+    model = Libmf::Model.new(quiet: true)
+    model.fit(data)
+
+    assert_equal [model.rows, model.factors], model.p_factors_numo.shape
+    assert_equal [model.columns, model.factors], model.q_factors_numo.shape
+  end
+
   private
 
   def file_path(filename)
