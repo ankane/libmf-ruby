@@ -62,10 +62,13 @@ module Libmf
     private
 
     def _factors(ptr, n, format)
-      if format == :numo
+      case format
+      when :numo
         Numo::SFloat.from_string(ptr.read_bytes(n * factors * 4)).reshape(n, factors)
-      else
+      when nil
         ptr.read_array_of_float(n * factors).each_slice(factors).to_a
+      else
+        raise ArgumentError, "Unknown format"
       end
     end
 

@@ -94,6 +94,11 @@ class LibmfTest < Minitest::Test
 
     assert_equal [model.rows, model.factors], model.p_factors(:numo).shape
     assert_equal [model.columns, model.factors], model.q_factors(:numo).shape
+
+    # unknown format
+    assert_raises(ArgumentError) do
+      model.p_factors(:bad)
+    end
   end
 
   private
