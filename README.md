@@ -124,7 +124,7 @@ For one-class matrix factorization
 
 ## Performance [master]
 
-For performance, data can be read directly from files
+For performance, read data directly from files
 
 ```ruby
 model.fit("train.txt", eval_set: "validate.txt")
