@@ -92,8 +92,8 @@ class LibmfTest < Minitest::Test
     model = Libmf::Model.new(quiet: true)
     model.fit(data)
 
-    assert_equal [model.rows, model.factors], model.p_factors_numo.shape
-    assert_equal [model.columns, model.factors], model.q_factors_numo.shape
+    assert_equal [model.rows, model.factors], model.p_factors(:numo).shape
+    assert_equal [model.columns, model.factors], model.q_factors(:numo).shape
   end
 
   private

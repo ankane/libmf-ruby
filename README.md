@@ -144,8 +144,8 @@ Data should be in the format `row_index column_index value`:
 Get latent factors as Numo arrays
 
 ```ruby
-model.p_factors_numo
-model.q_factors_numo
+model.p_factors(:numo)
+model.q_factors(:numo)
 ```
 
 ## Resources

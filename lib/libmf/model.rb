@@ -51,23 +51,23 @@ module Libmf
       model[:b]
     end
 
-    def p_factors
-      reshape(model[:p].read_array_of_float(factors * rows), factors)
+    def p_factors(format = nil)
+      _factors(model[:p], rows, format)
     end
 
-    def q_factors
-      reshape(model[:q].read_array_of_float(factors * columns), factors)
-    end
-
-    def p_factors_numo
-      Numo::SFloat.from_string(model[:p].read_bytes(factors * rows * 4)).reshape(rows, factors)
-    end
-
-    def q_factors_numo
-      Numo::SFloat.from_string(model[:q].read_bytes(factors * columns * 4)).reshape(columns, factors)
+    def q_factors(format = nil)
+      _factors(model[:q], columns, format)
     end
 
     private
+
+    def _factors(ptr, n, format)
+      if format == :numo
+        Numo::SFloat.from_string(ptr.read_bytes(n * factors * 4)).reshape(n, factors)
+      else
+        ptr.read_array_of_float(n * factors).each_slice(factors).to_a
+      end
+    end
 
     def model
       raise Error, "Not fit" unless @model
@@ -130,10 +130,6 @@ module Libmf
       prob[:nnz] = data.size
       prob[:r] = r
       prob
-    end
-
-    def reshape(arr, factors)
-      arr.each_slice(factors).to_a
     end
   end
 end

@@ -1,7 +1,7 @@
 ## 0.1.4 (unreleased)
 
 - Added support for reading data directly from files
-- Added `p_factors_numo` and `q_factors_numo`
+- Added `:numo` option to `p_factors` and `q_factors`
 - Improved performance of loading data by 5x
 - Changed to BSD 3-Clause license to match LIBMF
 
