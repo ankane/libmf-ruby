@@ -2,12 +2,7 @@ module Libmf
   module FFI
     extend ::FFI::Library
 
-    begin
-      ffi_lib Libmf.ffi_lib
-    rescue LoadError => e
-      raise e if ENV["LIBMF_DEBUG"]
-      raise LoadError, "Could not find LIBMF"
-    end
+    ffi_lib Libmf.ffi_lib
 
     class Node < ::FFI::Struct
       layout :u, :int,
