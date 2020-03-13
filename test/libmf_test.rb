@@ -104,7 +104,7 @@ class LibmfTest < Minitest::Test
   private
 
   def file_path(filename)
-    "vendor/libmf/demo/#{filename}"
+    "vendor/demo/#{filename}"
   end
 
   def read_file(filename)

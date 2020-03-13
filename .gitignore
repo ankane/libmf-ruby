@@ -7,4 +7,6 @@
 /spec/reports/
 /tmp/
 *.lock
-*.bundle
+*.so
+*.dylib
+*.dll

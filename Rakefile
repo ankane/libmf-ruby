@@ -1,6 +1,5 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
-require "rake/extensiontask"
 
 task default: :test
 Rake::TestTask.new do |t|
@@ -9,15 +8,31 @@ Rake::TestTask.new do |t|
   t.warning = false
 end
 
-Rake::ExtensionTask.new("libmf")
+def download_file(file)
+  require "open-uri"
 
-# include ext in local installs but not releases
-task :remove_ext do
-  path = "lib/libmf.bundle"
-  File.unlink(path) if File.exist?(path)
+  url = "https://github.com/ankane/ml-builds/releases/download/libmf-master/#{file}"
+  puts "Downloading #{file}..."
+  dest = "vendor/#{file}"
+  File.binwrite(dest, URI.open(url).read)
+  puts "Saved #{dest}"
 end
 
-Rake::Task["release:guard_clean"].enhance [:remove_ext]
+namespace :vendor do
+  task :linux do
+    download_file("libmf.so")
+  end
+
+  task :mac do
+    download_file("libmf.dylib")
+  end
+
+  task :windows do
+    download_file("mf.dll")
+  end
+
+  task all: [:linux, :mac, :windows]
+end
 
 task :benchmark do
   require "benchmark/ips"

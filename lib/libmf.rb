@@ -11,15 +11,16 @@ module Libmf
   class << self
     attr_accessor :ffi_lib
   end
-  lib_path =
-    if ::FFI::Platform.windows?
-      "../vendor/libmf/windows/mf.dll"
-    elsif ::FFI::Platform.mac?
-      "libmf.bundle"
+  lib_name =
+    if Gem.win_platform?
+      "mf.dll"
+    elsif RbConfig::CONFIG["host_os"] =~ /darwin/i
+      "libmf.dylib"
     else
       "libmf.so"
     end
-  self.ffi_lib = [File.expand_path(lib_path, __dir__)]
+  vendor_lib = File.expand_path("../vendor/#{lib_name}", __dir__)
+  self.ffi_lib = [vendor_lib]
 
   # friendlier error message
   autoload :FFI, "libmf/ffi"
