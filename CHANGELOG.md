@@ -1,4 +1,4 @@
-## 0.1.4 (unreleased)
+## 0.2.0 (unreleased)
 
 - Changed to BSD 3-Clause license to match LIBMF
 - Added support for reading data directly from files
