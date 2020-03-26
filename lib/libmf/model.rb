@@ -104,7 +104,7 @@ module Libmf
     def create_problem(data)
       if data.is_a?(String)
         # need to expand path so it's absolute
-        return FFI.read_problem(File.expand_path(data))
+        return FFI.mf_read_problem(File.expand_path(data))
       end
 
       raise Error, "No data" if data.empty?

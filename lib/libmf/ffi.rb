@@ -46,7 +46,7 @@ module Libmf
     end
 
     attach_function :mf_get_default_param, [], Parameter.by_value
-    attach_function :read_problem, [:string], Problem.by_value
+    attach_function :mf_read_problem, [:string], Problem.by_value
     attach_function :mf_save_model, [Model.by_ref, :string], :int
     attach_function :mf_load_model, [:string], Model.by_ref
     attach_function :mf_destroy_model, [Model.by_ref], :void

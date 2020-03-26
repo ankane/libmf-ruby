@@ -51,14 +51,12 @@ class LibmfTest < Minitest::Test
   end
 
   def test_path
-    skip
     model = Libmf::Model.new(quiet: true)
     model.fit(file_path("real_matrix.tr.txt"))
     assert_equal 2309, model.rows
   end
 
   def test_path_eval_set
-    skip
     model = Libmf::Model.new(quiet: true)
     model.fit(file_path("real_matrix.tr.txt"), eval_set: file_path("real_matrix.te.txt"))
     assert_equal 2309, model.rows
