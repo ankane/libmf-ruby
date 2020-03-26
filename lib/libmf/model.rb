@@ -51,11 +51,11 @@ module Libmf
       model[:b]
     end
 
-    def p_factors(format = nil)
+    def p_factors(format: nil)
       _factors(model[:p], rows, format)
     end
 
-    def q_factors(format = nil)
+    def q_factors(format: nil)
       _factors(model[:q], columns, format)
     end
 
@@ -68,7 +68,7 @@ module Libmf
       when nil
         ptr.read_array_of_float(n * factors).each_slice(factors).to_a
       else
-        raise ArgumentError, "Unknown format"
+        raise ArgumentError, "Invalid format"
       end
     end
 

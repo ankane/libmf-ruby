@@ -90,13 +90,14 @@ class LibmfTest < Minitest::Test
     model = Libmf::Model.new(quiet: true)
     model.fit(data)
 
-    assert_equal [model.rows, model.factors], model.p_factors(:numo).shape
-    assert_equal [model.columns, model.factors], model.q_factors(:numo).shape
+    assert_equal [model.rows, model.factors], model.p_factors(format: :numo).shape
+    assert_equal [model.columns, model.factors], model.q_factors(format: :numo).shape
 
     # unknown format
-    assert_raises(ArgumentError) do
-      model.p_factors(:bad)
+    error = assert_raises(ArgumentError) do
+      model.p_factors(format: :bad)
     end
+    assert_equal "Invalid format", error.message
   end
 
   private

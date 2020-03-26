@@ -2,7 +2,7 @@
 
 - Changed to BSD 3-Clause license to match LIBMF
 - Added support for reading data directly from files
-- Added `:numo` option to `p_factors` and `q_factors`
+- Added `format: :numo` option to `p_factors` and `q_factors`
 - Improved performance of loading data by 5x
 
 ## 0.1.3 (2019-11-07)
