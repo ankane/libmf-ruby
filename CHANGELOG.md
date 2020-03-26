@@ -1,4 +1,4 @@
-## 0.2.0 (unreleased)
+## 0.2.0 (2020-03-26)
 
 - Changed to BSD 3-Clause license to match LIBMF
 - Added support for reading data directly from files

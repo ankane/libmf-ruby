@@ -122,7 +122,7 @@ For one-class matrix factorization
 - 11 - column-oriented pair-wise logarithmic loss
 - 12 - squared error (L2-norm)
 
-## Performance [master]
+## Performance
 
 For performance, read data directly from files
 
@@ -139,7 +139,7 @@ Data should be in the format `row_index column_index value`:
 1 1 4.0
 ```
 
-## Numo [master]
+## Numo
 
 Get latent factors as Numo arrays
 
