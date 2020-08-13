@@ -1,5 +1,6 @@
 BSD 3-Clause License
 
+Copyright (c) 2014-2015, The LIBMF Project
 Copyright (c) 2019-2020, Andrew Kane
 All rights reserved.
 
