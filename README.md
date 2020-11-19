@@ -4,7 +4,7 @@
 
 Check out [Disco](https://github.com/ankane/disco) for higher-level collaborative filtering
 
-[![Build Status](https://travis-ci.org/ankane/libmf.svg?branch=master)](https://travis-ci.org/ankane/libmf) [![Build status](https://ci.appveyor.com/api/projects/status/92fbip1bd8sjd2tj/branch/master?svg=true)](https://ci.appveyor.com/project/ankane/libmf/branch/master)
+[![Build Status](https://github.com/ankane/libmf/workflows/build/badge.svg?branch=master)](https://github.com/ankane/libmf/actions)
 
 ## Installation
 
