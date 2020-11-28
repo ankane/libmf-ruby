@@ -39,14 +39,14 @@ Make predictions
 model.predict(row_index, column_index)
 ```
 
-Get the latent factors
+Get the latent factors (these approximate the training matrix)
 
 ```ruby
 model.p_factors
 model.q_factors
 ```
 
-Get the bias
+Get the bias (average of all elements in training matrix)
 
 ```ruby
 model.bias
