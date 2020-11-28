@@ -39,12 +39,17 @@ Make predictions
 model.predict(row_index, column_index)
 ```
 
-Get the bias and latent factors
+Get the latent factors
+
+```ruby
+model.p_factors
+model.q_factors
+```
+
+Get the bias
 
 ```ruby
 model.bias
-model.p_factors
-model.q_factors
 ```
 
 Save the model to a file
