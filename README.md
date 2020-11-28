@@ -46,7 +46,7 @@ model.p_factors
 model.q_factors
 ```
 
-Get the bias (average of all elements in training matrix)
+Get the bias (average of all elements in the training matrix)
 
 ```ruby
 model.bias
