@@ -25,6 +25,7 @@ namespace :vendor do
 
   task :mac do
     download_file("libmf.dylib")
+    download_file("libmf.arm64.dylib")
   end
 
   task :windows do
