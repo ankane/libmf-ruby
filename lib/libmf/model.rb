@@ -112,9 +112,9 @@ module Libmf
       # TODO do in C for better performance
       # can use FIX2INT() and RFLOAT_VALUE() instead of pack
       buffer = String.new
+      pack_format = "iif"
       data.each do |row|
-        row[0, 2].pack("i*".freeze, buffer: buffer)
-        row[2, 1].pack("f".freeze, buffer: buffer)
+        row.pack(pack_format, buffer: buffer)
       end
 
       r = ::FFI::MemoryPointer.new(FFI::Node, data.size)

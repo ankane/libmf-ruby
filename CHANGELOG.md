@@ -1,3 +1,7 @@
+## 0.2.2 (unreleased)
+
+- Reduced allocations
+
 ## 0.2.1 (2020-12-28)
 
 - Added ARM shared library for Mac
