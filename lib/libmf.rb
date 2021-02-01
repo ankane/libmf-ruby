@@ -14,10 +14,12 @@ module Libmf
   lib_name =
     if Gem.win_platform?
       "mf.dll"
-    elsif RbConfig::CONFIG["arch"] =~ /arm64-darwin/i
-      "libmf.arm64.dylib"
     elsif RbConfig::CONFIG["host_os"] =~ /darwin/i
-      "libmf.dylib"
+      if RbConfig::CONFIG["host_cpu"] =~ /arm/i
+        "libmf.arm64.dylib"
+      else
+        "libmf.dylib"
+      end
     else
       "libmf.so"
     end

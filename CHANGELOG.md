@@ -1,6 +1,7 @@
 ## 0.2.2 (unreleased)
 
 - Reduced allocations
+- Improved ARM detection
 
 ## 0.2.1 (2020-12-28)
 
