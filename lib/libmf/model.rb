@@ -111,6 +111,7 @@ module Libmf
 
       # TODO do in C for better performance
       # can use FIX2INT() and RFLOAT_VALUE() instead of pack
+      # and write directly to C string
       buffer = String.new
       pack_format = "iif"
       data.each do |row|
