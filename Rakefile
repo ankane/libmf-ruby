@@ -40,7 +40,7 @@ task :benchmark do
   require "libmf"
 
   data = []
-  File.foreach("vendor/libmf/demo/real_matrix.tr.txt") do |line|
+  File.foreach("vendor/demo/real_matrix.tr.txt") do |line|
     row = line.chomp.split(" ")
     data << [row[0].to_i, row[1].to_i, row[2].to_f]
   end
