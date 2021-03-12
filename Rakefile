@@ -26,6 +26,7 @@ end
 namespace :vendor do
   task :linux do
     download_file("libmf.so", "5a22ec277a14ab8e3b8efacfec7fe57e5ac4192ea60e233d7e6db38db755a67e")
+    download_file("libmf.arm64.so", "223ef5d1213b883c8cb8623bf07bf45167cd48585a5f2b59618cea034c72ad61")
   end
 
   task :mac do

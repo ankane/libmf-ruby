@@ -21,7 +21,11 @@ module Libmf
         "libmf.dylib"
       end
     else
-      "libmf.so"
+      if RbConfig::CONFIG["host_cpu"] =~ /aarch64/i
+        "libmf.arm64.so"
+      else
+        "libmf.so"
+      end
     end
   vendor_lib = File.expand_path("../vendor/#{lib_name}", __dir__)
   self.ffi_lib = [vendor_lib]

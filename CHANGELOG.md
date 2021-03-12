@@ -1,3 +1,7 @@
+## 0.2.3 (unreleased)
+
+- Added ARM shared library for Linux
+
 ## 0.2.2 (2021-02-04)
 
 - Reduced allocations
