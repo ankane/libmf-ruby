@@ -1,4 +1,4 @@
-## 0.2.3 (unreleased)
+## 0.2.3 (2021-03-14)
 
 - Added ARM shared library for Linux
 
