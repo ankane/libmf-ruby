@@ -43,15 +43,22 @@ module Libmf
         :b, :float,
         :p, :pointer,
         :q, :pointer
+
+      def self.release(pointer)
+        unless pointer.null?
+          ref = ::FFI::MemoryPointer.new(:pointer).write_pointer(pointer)
+          FFI.mf_destroy_model(ref)
+        end
+      end
     end
 
     attach_function :mf_get_default_param, [], Parameter.by_value
     attach_function :mf_read_problem, [:string], Problem.by_value
     attach_function :mf_save_model, [Model.by_ref, :string], :int
-    attach_function :mf_load_model, [:string], Model.by_ref
-    attach_function :mf_destroy_model, [Model.by_ref], :void
-    attach_function :mf_train, [Problem.by_ref, Parameter.by_value], Model.by_ref
-    attach_function :mf_train_with_validation, [Problem.by_ref, Problem.by_ref, Parameter.by_value], Model.by_ref
+    attach_function :mf_load_model, [:string], Model.auto_ptr
+    attach_function :mf_destroy_model, [:pointer], :void
+    attach_function :mf_train, [Problem.by_ref, Parameter.by_value], Model.auto_ptr
+    attach_function :mf_train_with_validation, [Problem.by_ref, Problem.by_ref, Parameter.by_value], Model.auto_ptr
     attach_function :mf_predict, [Model.by_ref, :int, :int], :float
     attach_function :mf_cross_validation, [Problem.by_ref, :int, Parameter.by_value], :double
   end
