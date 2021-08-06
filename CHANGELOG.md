@@ -1,4 +1,4 @@
-## 0.2.4 (unreleased)
+## 0.2.4 (2021-08-05)
 
 - Fixed memory leak
 
