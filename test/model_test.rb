@@ -1,6 +1,6 @@
 require_relative "test_helper"
 
-class LibmfTest < Minitest::Test
+class ModelTest < Minitest::Test
   def test_works
     data = read_file("real_matrix.tr.txt")
 
