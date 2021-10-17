@@ -84,6 +84,24 @@ class ModelTest < Minitest::Test
     assert_equal "No data", error.message
   end
 
+  def test_save_missing
+    data = read_file("real_matrix.tr.txt")
+    model = Libmf::Model.new(quiet: true)
+    model.fit(data)
+    error = assert_raises Libmf::Error do
+      model.save_model("missing/model.txt")
+    end
+    assert_equal "Cannot save model", error.message
+  end
+
+  def test_load_missing
+    model = Libmf::Model.new
+    error = assert_raises Libmf::Error do
+      model.load_model("missing.txt")
+    end
+    assert_equal "Cannot open model", error.message
+  end
+
   def test_fit_bad_param
     data = read_file("real_matrix.tr.txt")
     model = Libmf::Model.new(quiet: true, factors: 0)

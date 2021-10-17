@@ -32,11 +32,13 @@ module Libmf
     end
 
     def save_model(path)
-      FFI.mf_save_model(model, path)
+      status = FFI.mf_save_model(model, path)
+      raise Error, "Cannot save model" if status != 0
     end
 
     def load_model(path)
       @model = FFI.mf_load_model(path)
+      raise Error, "Cannot open model" if @model.null?
     end
 
     def rows

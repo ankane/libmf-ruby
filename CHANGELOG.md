@@ -1,3 +1,7 @@
+## 0.2.5 (unreleased)
+
+- Improved error checking for `fit`, `cv`, `save_model`, and `load_model`
+
 ## 0.2.4 (2021-08-05)
 
 - Fixed memory leak
