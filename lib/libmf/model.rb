@@ -14,6 +14,7 @@ module Libmf
         else
           FFI.mf_train(train_set, param)
         end
+      raise Error, "fit failed" if @model.null?
 
       nil
     end
@@ -24,7 +25,10 @@ module Libmf
 
     def cv(data, folds: 5)
       problem = create_problem(data)
-      FFI.mf_cross_validation(problem, folds, param)
+      # TODO update fork to differentiate between bad parameters and zero error
+      res = FFI.mf_cross_validation(problem, folds, param)
+      raise Error, "cv failed" if res == 0
+      res
     end
 
     def save_model(path)

@@ -84,6 +84,24 @@ class ModelTest < Minitest::Test
     assert_equal "No data", error.message
   end
 
+  def test_fit_bad_param
+    data = read_file("real_matrix.tr.txt")
+    model = Libmf::Model.new(quiet: true, factors: 0)
+    error = assert_raises Libmf::Error do
+      model.fit(data)
+    end
+    assert_equal "fit failed", error.message
+  end
+
+  def test_cv_bad_param
+    data = read_file("real_matrix.tr.txt")
+    model = Libmf::Model.new(quiet: true, factors: 0)
+    error = assert_raises Libmf::Error do
+      model.cv(data)
+    end
+    assert_equal "cv failed", error.message
+  end
+
   def test_numo
     data = read_file("real_matrix.tr.txt")
 
