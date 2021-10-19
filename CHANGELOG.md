@@ -1,5 +1,6 @@
 ## 0.2.5 (unreleased)
 
+- Added `Matrix` class
 - Improved error checking for `fit`, `cv`, `save_model`, and `load_model`
 
 ## 0.2.4 (2021-08-05)
