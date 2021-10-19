@@ -87,19 +87,18 @@ module Libmf
       param = FFI.mf_get_default_param
       options = @options.dup
 
-      loss_map = {
-        real_l2: 0,
-        real_l1: 1,
-        real_kl: 2,
-        binary_log: 5,
-        binary_l2: 6,
-        binary_l1: 7,
-        one_class_row: 10,
-        one_class_col: 11,
-        one_class_l2: 12
-      }
-
       if options[:loss].is_a?(Symbol)
+        loss_map = {
+          real_l2: 0,
+          real_l1: 1,
+          real_kl: 2,
+          binary_log: 5,
+          binary_l2: 6,
+          binary_l1: 7,
+          one_class_row: 10,
+          one_class_col: 11,
+          one_class_l2: 12
+        }
         options[:loss] = loss_map[options[:loss]] || (raise ArgumentError, "Unknown loss")
       end
 
