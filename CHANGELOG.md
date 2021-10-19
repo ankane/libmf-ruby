@@ -1,4 +1,4 @@
-## 0.2.5 (unreleased)
+## 0.2.5 (2021-10-18)
 
 - Added named loss functions
 - Added `Matrix` class
