@@ -1,5 +1,6 @@
 ## 0.2.5 (unreleased)
 
+- Added named loss functions
 - Added `Matrix` class
 - Improved error checking for `fit`, `cv`, `save_model`, and `load_model`
 

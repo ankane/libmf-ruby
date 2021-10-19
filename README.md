@@ -90,7 +90,7 @@ Pass parameters - default values below
 
 ```ruby
 Libmf::Model.new(
-  loss: 0,                # loss function
+  loss: :real_l2,         # loss function
   factors: 8,             # number of latent factors
   threads: 12,            # number of threads used
   bins: 25,               # number of bins
@@ -111,21 +111,21 @@ Libmf::Model.new(
 
 For real-valued matrix factorization
 
-- 0 - squared error (L2-norm)
-- 1 - absolute error (L1-norm)
-- 2 - generalized KL-divergence
+- `:real_l2` - squared error (L2-norm)
+- `:real_l1` - absolute error (L1-norm)
+- `:real_kl` - generalized KL-divergence
 
 For binary matrix factorization
 
-- 5 - logarithmic error
-- 6 - squared hinge loss
-- 7 - hinge loss
+- `:binary_log` - logarithmic error
+- `:binary_l2` - squared hinge loss
+- `:binary_l1` - hinge loss
 
 For one-class matrix factorization
 
-- 10 - row-oriented pair-wise logarithmic loss
-- 11 - column-oriented pair-wise logarithmic loss
-- 12 - squared error (L2-norm)
+- `:one_class_row` - row-oriented pair-wise logarithmic loss
+- `:one_class_col` - column-oriented pair-wise logarithmic loss
+- `:one_class_l2` - squared error (L2-norm)
 
 ## Performance
 

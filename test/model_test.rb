@@ -68,6 +68,23 @@ class ModelTest < Minitest::Test
     assert model.cv(data)
   end
 
+  def test_loss_real_kl
+    data = read_file("real_matrix.tr.txt")
+
+    model = Libmf::Model.new(quiet: true, loss: :real_kl)
+    model.fit(data)
+  end
+
+  def test_loss_unknown
+    data = read_file("real_matrix.tr.txt")
+
+    model = Libmf::Model.new(quiet: true, loss: :unknown)
+    error = assert_raises ArgumentError do
+      model.fit(data)
+    end
+    assert_equal "Unknown loss", error.message
+  end
+
   def test_not_fit
     model = Libmf::Model.new
     error = assert_raises Libmf::Error do
