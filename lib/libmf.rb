@@ -2,6 +2,7 @@
 require "ffi"
 
 # modules
+require "libmf/matrix"
 require "libmf/model"
 require "libmf/version"
 

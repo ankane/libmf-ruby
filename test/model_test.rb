@@ -136,6 +136,19 @@ class ModelTest < Minitest::Test
     assert_equal "Invalid format", error.message
   end
 
+  def test_matrix
+    data = Libmf::Matrix.new
+    read_file("real_matrix.tr.txt").each do |row|
+      data.push(*row)
+    end
+
+    model = Libmf::Model.new(quiet: true)
+    model.fit(data)
+
+    assert_equal 2309, model.rows
+    assert_equal 1368, model.columns
+  end
+
   private
 
   def file_path(filename)

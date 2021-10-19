@@ -113,6 +113,10 @@ module Libmf
         return FFI.mf_read_problem(File.expand_path(data))
       end
 
+      if data.is_a?(Matrix)
+        data = data.data
+      end
+
       raise Error, "No data" if data.empty?
 
       # TODO do in C for better performance
