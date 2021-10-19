@@ -16,14 +16,13 @@ gem 'libmf'
 
 ## Getting Started
 
-Prep your data in the format `[row_index, column_index, value]`
+Prep your data in the format `row_index, column_index, value`
 
 ```ruby
-data = [
-  [0, 0, 5.0],
-  [0, 2, 3.5],
-  [1, 1, 4.0]
-]
+data = Libmf::Matrix.new
+data.push(0, 0, 5.0)
+data.push(0, 2, 3.5)
+data.push(1, 1, 4.0)
 ```
 
 Create a model
