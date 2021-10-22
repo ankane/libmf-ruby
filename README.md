@@ -1,10 +1,10 @@
-# LIBMF
+# LIBMF Ruby
 
 [LIBMF](https://github.com/cjlin1/libmf) - large-scale sparse matrix factorization - for Ruby
 
 Check out [Disco](https://github.com/ankane/disco) for higher-level collaborative filtering
 
-[![Build Status](https://github.com/ankane/libmf/workflows/build/badge.svg?branch=master)](https://github.com/ankane/libmf/actions)
+[![Build Status](https://github.com/ankane/libmf-ruby/workflows/build/badge.svg?branch=master)](https://github.com/ankane/libmf-ruby/actions)
 
 ## Installation
 
@@ -158,22 +158,22 @@ model.q_factors(format: :numo)
 
 ## History
 
-View the [changelog](https://github.com/ankane/libmf/blob/master/CHANGELOG.md)
+View the [changelog](https://github.com/ankane/libmf-ruby/blob/master/CHANGELOG.md)
 
 ## Contributing
 
 Everyone is encouraged to help improve this project. Here are a few ways you can help:
 
-- [Report bugs](https://github.com/ankane/libmf/issues)
-- Fix bugs and [submit pull requests](https://github.com/ankane/libmf/pulls)
+- [Report bugs](https://github.com/ankane/libmf-ruby/issues)
+- Fix bugs and [submit pull requests](https://github.com/ankane/libmf-ruby/pulls)
 - Write, clarify, or fix documentation
 - Suggest or add new features
 
 To get started with development:
 
 ```sh
-git clone --recursive https://github.com/ankane/libmf.git
-cd libmf
+git clone --recursive https://github.com/ankane/libmf-ruby.git
+cd libmf-ruby
 bundle install
 bundle exec rake vendor:all
 bundle exec rake test
