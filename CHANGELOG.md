@@ -1,3 +1,7 @@
+## 0.2.6 (unreleased)
+
+- Improved ARM detection
+
 ## 0.2.5 (2021-10-18)
 
 - Added named loss functions
