@@ -36,6 +36,12 @@ module Libmf
       raise Error, "Cannot save model" if status != 0
     end
 
+    def self.load(path)
+      model = Model.new
+      model.load_model(path)
+      model
+    end
+
     def load_model(path)
       @model = FFI.mf_load_model(path)
       raise Error, "Cannot open model" if @model.null?

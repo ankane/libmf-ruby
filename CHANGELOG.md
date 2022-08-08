@@ -1,3 +1,7 @@
+## 0.2.7 (unreleased)
+
+- Added `load` method
+
 ## 0.2.6 (2021-12-02)
 
 - Improved ARM detection

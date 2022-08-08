@@ -19,7 +19,7 @@ class ModelTest < Minitest::Test
     pred = model.predict(1, 1)
     tempfile = Tempfile.new("libmf")
     model.save_model(tempfile.path)
-    model.load_model(tempfile.path)
+    model = Libmf::Model.load(tempfile.path)
     assert_equal pred, model.predict(1, 1)
 
     lines = File.readlines(tempfile.path)
