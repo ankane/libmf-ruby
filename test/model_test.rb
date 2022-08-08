@@ -48,6 +48,7 @@ class ModelTest < Minitest::Test
 
     model = Libmf::Model.new(quiet: true)
     model.fit(train_set, eval_set: eval_set)
+    assert model.rmse(eval_set)
   end
 
   def test_path

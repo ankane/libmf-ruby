@@ -71,6 +71,34 @@ module Libmf
       _factors(model[:q], columns, format)
     end
 
+    def rmse(data)
+      FFI.calc_rmse(create_problem(data), model)
+    end
+
+    def mae(data)
+      FFI.calc_mae(create_problem(data), model)
+    end
+
+    def gkl(data)
+      FFI.calc_gkl(create_problem(data), model)
+    end
+
+    def logloss(data)
+      FFI.calc_logloss(create_problem(data), model)
+    end
+
+    def accuracy(data)
+      FFI.calc_accuracy(create_problem(data), model)
+    end
+
+    def mpr(data, transpose)
+      FFI.calc_mpr(create_problem(data), model, transpose)
+    end
+
+    def auc(data, transpose)
+      FFI.calc_auc(create_problem(data), model, transpose)
+    end
+
     private
 
     def _factors(ptr, n, format)

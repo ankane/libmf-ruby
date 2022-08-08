@@ -126,6 +126,50 @@ For one-class matrix factorization
 - `:one_class_col` - column-oriented pair-wise logarithmic loss
 - `:one_class_l2` - squared error (L2-norm)
 
+## Metrics [unreleased]
+
+Calculate RMSE (for real-valued MF)
+
+```ruby
+model.rmse(data)
+```
+
+Calculate MAE (for real-valued MF)
+
+```ruby
+model.mae(data)
+```
+
+Calculate generalized KL-divergence (for non-negative real-valued MF)
+
+```ruby
+model.gkl(data)
+```
+
+Calculate logarithmic loss (for binary MF)
+
+```ruby
+model.logloss(data)
+```
+
+Calculate accuracy (for binary MF)
+
+```ruby
+model.accuracy(data)
+```
+
+Calculate MPR (for one-class MF)
+
+```ruby
+model.mpr(data, transpose)
+```
+
+Calculate AUC (for one-class MF)
+
+```ruby
+model.auc(data, transpose)
+```
+
 ## Performance
 
 For performance, read data directly from files

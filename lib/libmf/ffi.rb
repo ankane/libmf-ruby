@@ -61,5 +61,12 @@ module Libmf
     attach_function :mf_train_with_validation, [Problem.by_ref, Problem.by_ref, Parameter.by_value], Model.auto_ptr
     attach_function :mf_predict, [Model.by_ref, :int, :int], :float
     attach_function :mf_cross_validation, [Problem.by_ref, :int, Parameter.by_value], :double
+    attach_function :calc_rmse, [Problem.by_ref, Model.by_ref], :double
+    attach_function :calc_mae, [Problem.by_ref, Model.by_ref], :double
+    attach_function :calc_gkl, [Problem.by_ref, Model.by_ref], :double
+    attach_function :calc_logloss, [Problem.by_ref, Model.by_ref], :double
+    attach_function :calc_accuracy, [Problem.by_ref, Model.by_ref], :double
+    attach_function :calc_mpr, [Problem.by_ref, Model.by_ref, :bool], :double
+    attach_function :calc_auc, [Problem.by_ref, Model.by_ref, :bool], :double
   end
 end
