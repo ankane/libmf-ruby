@@ -11,7 +11,7 @@ Check out [Disco](https://github.com/ankane/disco) for higher-level collaborativ
 Add this line to your application’s Gemfile:
 
 ```ruby
-gem 'libmf'
+gem "libmf"
 ```
 
 ## Getting Started
@@ -172,7 +172,7 @@ Everyone is encouraged to help improve this project. Here are a few ways you can
 To get started with development:
 
 ```sh
-git clone --recursive https://github.com/ankane/libmf-ruby.git
+git clone https://github.com/ankane/libmf-ruby.git
 cd libmf-ruby
 bundle install
 bundle exec rake vendor:all
