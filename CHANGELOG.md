@@ -2,7 +2,7 @@
 
 - Added metrics
 - Prefer `save` over `save_model`
-- Added `load` method
+- Prefer `load` over `load_model`
 
 ## 0.2.6 (2021-12-02)
 

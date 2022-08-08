@@ -113,9 +113,8 @@ class ModelTest < Minitest::Test
   end
 
   def test_load_missing
-    model = Libmf::Model.new
     error = assert_raises Libmf::Error do
-      model.load_model("missing.txt")
+      Libmf::Model.load("missing.txt")
     end
     assert_equal "Cannot open model", error.message
   end
