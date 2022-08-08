@@ -1,8 +1,9 @@
-## 0.2.7 (unreleased)
+## 0.3.0 (unreleased)
 
 - Added metrics
 - Prefer `save` over `save_model`
 - Prefer `load` over `load_model`
+- Dropped support for Ruby < 2.7
 
 ## 0.2.6 (2021-12-02)
 
