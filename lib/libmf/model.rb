@@ -35,6 +35,7 @@ module Libmf
       status = FFI.mf_save_model(model, path)
       raise Error, "Cannot save model" if status != 0
     end
+    alias_method :save, :save_model
 
     def self.load(path)
       model = Model.new

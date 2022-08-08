@@ -18,7 +18,7 @@ class ModelTest < Minitest::Test
 
     pred = model.predict(1, 1)
     tempfile = Tempfile.new("libmf")
-    model.save_model(tempfile.path)
+    model.save(tempfile.path)
     model = Libmf::Model.load(tempfile.path)
     assert_equal pred, model.predict(1, 1)
 
@@ -107,7 +107,7 @@ class ModelTest < Minitest::Test
     model = Libmf::Model.new(quiet: true)
     model.fit(data)
     error = assert_raises Libmf::Error do
-      model.save_model("missing/model.txt")
+      model.save("missing/model.txt")
     end
     assert_equal "Cannot save model", error.message
   end
