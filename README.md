@@ -170,6 +170,27 @@ Calculate AUC (for one-class MF)
 model.auc(data, transpose)
 ```
 
+## Example
+
+Download the [MovieLens 100K dataset](https://grouplens.org/datasets/movielens/100k/) and use:
+
+```ruby
+require "csv"
+
+train_set = Libmf::Matrix.new
+valid_set = Libmf::Matrix.new
+
+CSV.foreach("u.data", col_sep: "\t").with_index do |row, i|
+  data = i < 80000 ? train_set : valid_set
+  data.push(row[0].to_i, row[1].to_i, row[2].to_f)
+end
+
+model = Libmf::Model.new(factors: 20)
+model.fit(train_set, eval_set: valid_set)
+
+puts model.rmse(valid_set)
+```
+
 ## Performance
 
 For performance, read data directly from files
