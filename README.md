@@ -54,13 +54,13 @@ model.bias
 Save the model to a file
 
 ```ruby
-model.save_model("model.txt")
+model.save("model.txt")
 ```
 
 Load the model from a file
 
 ```ruby
-model.load_model("model.txt")
+model = Libmf::Model.load("model.txt")
 ```
 
 Pass a validation set
@@ -126,7 +126,7 @@ For one-class matrix factorization
 - `:one_class_col` - column-oriented pair-wise logarithmic loss
 - `:one_class_l2` - squared error (L2-norm)
 
-## Metrics [unreleased]
+## Metrics
 
 Calculate RMSE (for real-valued MF)
 
