@@ -2,9 +2,9 @@
 require "ffi"
 
 # modules
-require "libmf/matrix"
-require "libmf/model"
-require "libmf/version"
+require_relative "libmf/matrix"
+require_relative "libmf/model"
+require_relative "libmf/version"
 
 module Libmf
   class Error < StandardError; end
