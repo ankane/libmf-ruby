@@ -4,7 +4,7 @@
 
 Check out [Disco](https://github.com/ankane/disco) for higher-level collaborative filtering
 
-[![Build Status](https://github.com/ankane/libmf-ruby/workflows/build/badge.svg?branch=master)](https://github.com/ankane/libmf-ruby/actions)
+[![Build Status](https://github.com/ankane/libmf-ruby/actions/workflows/build.yml/badge.svg)](https://github.com/ankane/libmf-ruby/actions)
 
 ## Installation
 
