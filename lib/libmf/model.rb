@@ -141,13 +141,13 @@ module Libmf
       options[:bins] ||= 25 unless options[:nr_bins]
       options[:copy_data] = false unless options.key?(:copy_data)
       options_map = {
-        :loss => :fun,
-        :factors => :k,
-        :threads => :nr_threads,
-        :bins => :nr_bins,
-        :iterations => :nr_iters,
-        :learning_rate => :eta,
-        :nmf => :do_nmf
+        loss: :fun,
+        factors: :k,
+        threads: :nr_threads,
+        bins: :nr_bins,
+        iterations: :nr_iters,
+        learning_rate: :eta,
+        nmf: :do_nmf
       }
       options.each do |k, v|
         k = options_map[k] if options_map[k]
