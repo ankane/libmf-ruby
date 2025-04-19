@@ -140,8 +140,6 @@ class ModelTest < Minitest::Test
   def test_numo
     skip if RUBY_PLATFORM == "java"
 
-    require "numo/narray"
-
     data = read_file("real_matrix.tr.txt")
 
     model = Libmf::Model.new(quiet: true)
