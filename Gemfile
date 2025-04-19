@@ -5,4 +5,4 @@ gemspec
 gem "rake"
 gem "minitest", ">= 5"
 gem "benchmark-ips"
-gem "numo-narray"
+gem "numo-narray", platform: :ruby
