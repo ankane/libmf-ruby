@@ -138,7 +138,7 @@ class ModelTest < Minitest::Test
   end
 
   def test_numo
-    skip if RUBY_PLATFORM == "java"
+    skip if ["jruby", "truffleruby"].include?(RUBY_ENGINE)
 
     data = read_file("real_matrix.tr.txt")
 
