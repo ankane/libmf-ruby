@@ -5,10 +5,13 @@ require "minitest/pride"
 
 class Minitest::Test
   def setup
-    # autoload before GC.stress
-    Libmf::FFI if stress?
-
-    GC.stress = true if stress?
+    if stress?
+      # autoload before GC.stress
+      Libmf::FFI.name
+      read_file("real_matrix.te.txt")
+      read_file("real_matrix.tr.txt")
+      GC.stress = true
+    end
   end
 
   def teardown

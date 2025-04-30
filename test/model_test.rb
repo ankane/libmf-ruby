@@ -174,12 +174,16 @@ class ModelTest < Minitest::Test
     "vendor/demo/#{filename}"
   end
 
+  FILES = {}
+
   def read_file(filename)
-    data = []
-    File.foreach(file_path(filename)) do |line|
-      row = line.chomp.split(" ")
-      data << [row[0].to_i, row[1].to_i, row[2].to_f]
+    FILES[filename] ||= begin
+      data = []
+      File.foreach(file_path(filename)) do |line|
+        row = line.chomp.split(" ")
+        data << [row[0].to_i, row[1].to_i, row[2].to_f].freeze
+      end
+      data.freeze
     end
-    data
   end
 end
