@@ -52,12 +52,18 @@ class ModelTest < Minitest::Test
   end
 
   def test_path
+    # TODO create function to free mf_problem in shared library
+    skip if valgrind?
+
     model = Libmf::Model.new(quiet: true)
     model.fit(file_path("real_matrix.tr.txt"))
     assert_equal 2309, model.rows
   end
 
   def test_path_eval_set
+    # TODO create function to free mf_problem in shared library
+    skip if valgrind?
+
     model = Libmf::Model.new(quiet: true)
     model.fit(file_path("real_matrix.tr.txt"), eval_set: file_path("real_matrix.te.txt"))
     assert_equal 2309, model.rows

@@ -20,4 +20,8 @@ class Minitest::Test
   def stress?
     ENV["STRESS"]
   end
+
+  def valgrind?
+    ENV["RUBY_MEMCHECK_RUNNING"]
+  end
 end

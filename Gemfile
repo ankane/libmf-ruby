@@ -5,6 +5,7 @@ gemspec
 gem "rake"
 gem "minitest"
 gem "benchmark-ips", require: false
+gem "ruby_memcheck"
 
 # TODO remove when numo-narray > 0.9.2.1 is released
 if Gem.win_platform?
