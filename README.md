@@ -191,23 +191,6 @@ model.fit(train_set, eval_set: valid_set)
 puts model.rmse(valid_set)
 ```
 
-## Performance
-
-For performance, read data directly from files
-
-```ruby
-model.fit("train.txt", eval_set: "validate.txt")
-model.cv("train.txt")
-```
-
-Data should be in the format `row_index column_index value`:
-
-```txt
-0 0 5.0
-0 2 3.5
-1 1 4.0
-```
-
 ## Numo
 
 Get latent factors as Numo arrays

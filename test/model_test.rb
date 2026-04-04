@@ -52,21 +52,19 @@ class ModelTest < Minitest::Test
   end
 
   def test_path
-    # TODO create function to free mf_problem in shared library
-    skip if valgrind?
-
     model = Libmf::Model.new(quiet: true)
-    model.fit(file_path("real_matrix.tr.txt"))
-    assert_equal 2309, model.rows
+    error = assert_raises(Libmf::Error) do
+      model.fit(file_path("real_matrix.tr.txt"))
+    end
+    assert_equal "Reading data directly from files is no longer supported", error.message
   end
 
   def test_path_eval_set
-    # TODO create function to free mf_problem in shared library
-    skip if valgrind?
-
     model = Libmf::Model.new(quiet: true)
-    model.fit(file_path("real_matrix.tr.txt"), eval_set: file_path("real_matrix.te.txt"))
-    assert_equal 2309, model.rows
+    error = assert_raises(Libmf::Error) do
+      model.fit(file_path("real_matrix.tr.txt"), eval_set: file_path("real_matrix.te.txt"))
+    end
+    assert_equal "Reading data directly from files is no longer supported", error.message
   end
 
   def test_cv

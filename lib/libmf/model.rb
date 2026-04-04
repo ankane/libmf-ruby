@@ -161,7 +161,7 @@ module Libmf
     def create_problem(data)
       if data.is_a?(String)
         # need to expand path so it's absolute
-        return FFI.mf_read_problem(File.expand_path(data))
+        raise Error, "Reading data directly from files is no longer supported"
       end
 
       if data.is_a?(Matrix)
