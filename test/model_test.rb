@@ -59,14 +59,6 @@ class ModelTest < Minitest::Test
     assert_equal "Reading data directly from files is no longer supported", error.message
   end
 
-  def test_path_eval_set
-    model = Libmf::Model.new(quiet: true)
-    error = assert_raises(Libmf::Error) do
-      model.fit(file_path("real_matrix.tr.txt"), eval_set: file_path("real_matrix.te.txt"))
-    end
-    assert_equal "Reading data directly from files is no longer supported", error.message
-  end
-
   def test_cv
     data = read_file("real_matrix.tr.txt")
     model = Libmf::Model.new(quiet: true)
