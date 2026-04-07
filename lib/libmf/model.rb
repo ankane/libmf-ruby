@@ -10,9 +10,16 @@ module Libmf
       @model =
         if eval_set
           eval_set = create_problem(eval_set)
+          param = self.param
+
+          # LIBMF does not handle this case
+          if param[:fun] == 12 && (eval_set[:m] > train_set[:m] || eval_set[:n] > train_set[:n])
+            raise ArgumentError, "Extra indices in eval set not supported for one_class_l2 loss"
+          end
+
           FFI.mf_train_with_validation(train_set, eval_set, param)
         else
-          FFI.mf_train(train_set, param)
+          FFI.mf_train(train_set, self.param)
         end
       raise Error, "fit failed" if @model.null?
 

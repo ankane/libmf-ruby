@@ -51,6 +51,25 @@ class ModelTest < Minitest::Test
     assert model.rmse(eval_set)
   end
 
+  def test_eval_set_extra
+    train_set = read_file("real_matrix.tr.txt")
+
+    model = Libmf::Model.new(quiet: true)
+    model.fit(train_set, eval_set: [[2400, 1400, 1]])
+    assert_equal 2309, model.rows
+    assert_equal 1368, model.columns
+  end
+
+  def test_eval_set_extra_one_class_l2
+    train_set = read_file("real_matrix.tr.txt")
+
+    model = Libmf::Model.new(loss: :one_class_l2)
+    error = assert_raises(ArgumentError) do
+      model.fit(train_set, eval_set: [[2400, 0, 1]])
+    end
+    assert_equal "Extra indices in eval set not supported for one_class_l2 loss", error.message
+  end
+
   def test_path
     model = Libmf::Model.new(quiet: true)
     error = assert_raises(Libmf::Error) do
