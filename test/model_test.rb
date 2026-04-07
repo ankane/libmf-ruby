@@ -122,10 +122,18 @@ class ModelTest < Minitest::Test
     assert_equal "Not fit", error.message
   end
 
-  def test_no_data
+  def test_fit_no_data
     model = Libmf::Model.new
     error = assert_raises Libmf::Error do
       model.fit([])
+    end
+    assert_equal "No data", error.message
+  end
+
+  def test_cv_no_data
+    model = Libmf::Model.new
+    error = assert_raises Libmf::Error do
+      model.cv([])
     end
     assert_equal "No data", error.message
   end
