@@ -65,6 +65,38 @@ class ModelTest < Minitest::Test
     assert model.cv(data)
   end
 
+  def test_negative_row_index
+    model = Libmf::Model.new(quiet: true)
+    error = assert_raises(ArgumentError) do
+      model.fit([[-1, 0, 1]])
+    end
+    assert_equal "Invalid row index", error.message
+  end
+
+  def test_max_row_index
+    model = Libmf::Model.new(quiet: true)
+    error = assert_raises(ArgumentError) do
+      model.fit([[2**31 - 1, 0, 1]])
+    end
+    assert_equal "Invalid row index", error.message
+  end
+
+  def test_negative_column_index
+    model = Libmf::Model.new(quiet: true)
+    error = assert_raises(ArgumentError) do
+      model.fit([[0, -1, 1]])
+    end
+    assert_equal "Invalid column index", error.message
+  end
+
+  def test_max_column_index
+    model = Libmf::Model.new(quiet: true)
+    error = assert_raises(ArgumentError) do
+      model.fit([[0, 2**31 - 1, 1]])
+    end
+    assert_equal "Invalid column index", error.message
+  end
+
   def test_loss_real_kl
     data = read_file("real_matrix.tr.txt")
 

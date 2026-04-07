@@ -174,7 +174,18 @@ module Libmf
       # and write directly to C string
       buffer = String.new
       pack_format = "iif"
+      int_max = 2**31 - 1
       data.each do |row|
+        u = row[0]
+        if u < 0 || u >= int_max
+          raise ArgumentError, "Invalid row index"
+        end
+
+        v = row[1]
+        if v < 0 || v >= int_max
+          raise ArgumentError, "Invalid column index"
+        end
+
         row.pack(pack_format, buffer: buffer)
       end
 
