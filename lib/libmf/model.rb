@@ -175,6 +175,8 @@ module Libmf
       buffer = String.new
       pack_format = "iif"
       int_max = 2**31 - 1
+      umax = -1
+      vmax = -1
       data.each do |row|
         u = row[0]
         if u < 0 || u >= int_max
@@ -186,6 +188,9 @@ module Libmf
           raise ArgumentError, "Invalid column index"
         end
 
+        umax = u if u > umax
+        vmax = v if v > vmax
+
         row.pack(pack_format, buffer: buffer)
       end
 
@@ -196,12 +201,9 @@ module Libmf
       # FFI will throw an error above if too long
       raise Error, "Bad buffer size" if r.size != buffer.bytesize
 
-      m = data.max_by { |r| r[0] }[0] + 1
-      n = data.max_by { |r| r[1] }[1] + 1
-
       prob = FFI::Problem.new
-      prob[:m] = m
-      prob[:n] = n
+      prob[:m] = umax + 1
+      prob[:n] = vmax + 1
       prob[:nnz] = data.size
       prob[:r] = r
       prob
