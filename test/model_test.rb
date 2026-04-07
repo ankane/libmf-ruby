@@ -123,6 +123,14 @@ class ModelTest < Minitest::Test
     model.fit(data)
   end
 
+  # TODO fix memory leak in shared library when copy_data is false
+  def test_loss_one_class_l2
+    data = read_file("real_matrix.tr.txt")
+
+    model = Libmf::Model.new(quiet: true, loss: :one_class_l2, copy_data: true)
+    model.fit(data)
+  end
+
   def test_loss_unknown
     data = read_file("real_matrix.tr.txt")
 
