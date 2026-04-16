@@ -1,5 +1,6 @@
 ## 0.5.0 (unreleased)
 
+- Fixed memory leak in shared library
 - Dropped support for reading data directly from files
 - Dropped support for Ruby < 3.3
 
