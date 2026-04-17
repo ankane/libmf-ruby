@@ -60,14 +60,24 @@ class ModelTest < Minitest::Test
     assert_equal 1368, model.columns
   end
 
-  def test_eval_set_extra_one_class_l2
+  def test_eval_set_extra_rows_one_class_l2
     train_set = read_file("real_matrix.tr.txt")
 
     model = Libmf::Model.new(loss: :one_class_l2)
     error = assert_raises(ArgumentError) do
-      model.fit(train_set, eval_set: [[1000000, 1000000, 1]])
+      model.fit(train_set, eval_set: [[1000000, 1, 1]])
     end
-    assert_equal "Extra indices in eval set not supported for one_class_l2 loss", error.message
+    assert_equal "Eval set cannot have extra rows for one_class_l2 loss", error.message
+  end
+
+  def test_eval_set_extra_columns_one_class_l2
+    train_set = read_file("real_matrix.tr.txt")
+
+    model = Libmf::Model.new(loss: :one_class_l2)
+    error = assert_raises(ArgumentError) do
+      model.fit(train_set, eval_set: [[1, 1000000, 1]])
+    end
+    assert_equal "Eval set cannot have extra columns for one_class_l2 loss", error.message
   end
 
   def test_path

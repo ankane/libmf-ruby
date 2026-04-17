@@ -12,9 +12,15 @@ module Libmf
           eval_set = create_problem(eval_set)
           param = self.param
 
-          # LIBMF does not handle this case
-          if param[:fun] == 12 && (eval_set[:m] > train_set[:m] || eval_set[:n] > train_set[:n])
-            raise ArgumentError, "Extra indices in eval set not supported for one_class_l2 loss"
+          # LIBMF does not handle these cases
+          if param[:fun] == 12
+            if eval_set[:m] > train_set[:m]
+              raise ArgumentError, "Eval set cannot have extra rows for one_class_l2 loss"
+            end
+
+            if eval_set[:n] > train_set[:n]
+              raise ArgumentError, "Eval set cannot have extra columns for one_class_l2 loss"
+            end
           end
 
           FFI.mf_train_with_validation(train_set, eval_set, param)
