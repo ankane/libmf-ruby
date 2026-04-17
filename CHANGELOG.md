@@ -1,4 +1,4 @@
-## 0.5.0 (unreleased)
+## 0.5.0 (2026-04-17)
 
 - Added checks for invalid data
 - Fixed memory leak in shared library
